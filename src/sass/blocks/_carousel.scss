@@ -5,6 +5,11 @@
         margin: 0 auto;
         position: relative;
     }
+    &__inner {
+        img {
+            height: 422px;
+        }
+    }
 }
 
 .slick-prev, .slick-next {
@@ -24,3 +29,4 @@
     right: -66px;
     left: auto;
 }
+
