@@ -3,7 +3,18 @@
         max-width: 800px;
         margin: 0 auto;
     }
-
+    .catalog {
+        &__content {
+            &_active {
+                justify-content: space-around;
+            }
+        }
+    }
+    .reviews {
+        &-item {
+            margin-bottom: 120px;
+        }
+    }
     .header {
         &__logo {
             img {
@@ -61,13 +72,34 @@
             font-size: 12px;
         }
     }
+    .carousel {
+        &__inner {
+            width: 650px;
+            margin: 0;
+            position: relative;
+            img {
+                width: 100%;
+            }
+        }
+    }
+    .reviews {
+        &-item {
+            &__alltext{
+                &__review {
+                    font-size: 13px;
+                }
+            }
+        }
+    }
 }
 
 @media screen and (max-width: 425px) {
     .container {
-        width: 400px;
+        width: 390px;
     }
     .header {
+        align-items: center;
+        justify-content: center;
         &__logo {
             max-width: 60px;
             min-width: 120px;
@@ -93,11 +125,17 @@
             font-size: 8px;
             margin-top: 30px;
         }
+        &_submit {
+            font-size: 9px;
+        }
     }
     .promo {
-        min-height: 605px;
+        min-height: 604px;
         &__header {
             font-size: 22px;
+        }
+        &__wrapper {
+            align-items: center;
         }
         &__subheader {
             margin-top: 2px;
@@ -105,11 +143,18 @@
         }
         &__icons {
             margin-top: 50px;
-            width: 350px;
+            width: 300px;
             padding-right: 30px;
         }
     }
+    .title {
+        font-size: 25px;
+        &_left {
+            font-size: 22px;
+        }
+    }
     .advantages {
+        height: 850px;
         &__header {
             margin-top: 50px;
             font-size: 24px;
@@ -127,6 +172,48 @@
         }
         &__descr {
             font-size: 12px;
+        }
+    }
+    .carousel {
+        &__inner {
+            width: 400px;
+            margin: 0 auto;
+            position: relative;
+        }
+        &__inner {
+            img {
+                height: 300px;
+            }
+        }
+    }
+    .catalog {
+        &__tab {
+            font-size: 10px;
+            width: 100px;
+        }
+    }
+    .footer {
+        &__info {
+            width: 410px;
+        }
+    }
+    .reviews {
+        &-item {
+            &__alltext {
+                width: 170px;
+                &__review {
+                    font-size: 9px;
+                }
+            }
+            &__img {
+                height: 105px;
+                width: 105px;
+            }
+        }
+    }
+    .reviews {
+        &-item {
+            margin-bottom: 130px;
         }
     }
 }
@@ -204,6 +291,11 @@
         }
         &__descr {
             font-size: 12px;
+        }
+    }
+    .carousel {
+        &__inner {
+            width: 310px;
         }
     }
 }
