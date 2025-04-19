@@ -1,7 +1,4 @@
 /* var устаревший вариант переменной */
-let number = 7;
-const pi = 3.14;
-
 // number
 // string - '', "", ``
 // boolean - true/false
@@ -19,6 +16,8 @@ const pi = 3.14;
 console.log(answer); */
 /* let answer = prompt("Вам есть 18?", "");
 console.log(answer); */
+
+//const { name } = require("browser-sync");
 
 /* console.log(4 + 'fdd'); */
 /* let isCheked = true,
@@ -78,4 +77,80 @@ $(document).ready(function(){
     }
     toggleSlide('.catalog-item__link');
     toggleSlide('.catalog-item__back');
+
+    //Modal
+
+    $('[data-modal=consultation]').on('click', function () {
+        $('.overlay, #consultation').fadeIn();
+    });
+    $('.modal__close').on('click', function() {
+        $('.overlay, .modal').fadeOut();
+    });
+
+    $('.button_mini').each(function(i) {
+        $(this).on('click', function() {
+            $('#order .modal__description').text($('.catalog-item__subtitle').eq(i).text());
+            $('.overlay, #order').fadeIn();
+        });
+    });
+    
+    function ValidForms(form) {
+        $(form).validate({
+            rules: {
+                name: "required",
+                phone: "required",
+                email: {
+                    required: true,
+                    email: true
+                }
+            },
+            messages: {
+                name: "Как вас зовут?",
+                phone: "Введите ваш номер телефона",
+                email: {
+                    required: "Необходимо ввести электронную почту",
+                    email: "Неправильно введена почта"
+                }
+            }
+        });
+    };
+
+    ValidForms('#consultation-form');
+    ValidForms('#consultation form');
+    ValidForms('#order form');
+
+    $("input[name=phone]").mask("+7 (999) 999-99-99");
+
+    $('form').submit(function(e) {
+        e.preventDefault();
+
+        if(!$(this).valid()) {
+            return;
+        };
+
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function () {
+            $(this).find("input").val("");
+
+            $('form').trigger("reset");
+        })
+        return false;
+    });
+    //smooth scroll and pageup
+    $(window).scroll(function() {
+        if ($(this).scrollTop() > 1000) {
+            $('.pageup').fadeIn();
+        } else {
+            $('.pageup').fadeOut();
+        }
+    });
+
+    $('a[href^="#"]').click(function(){
+        const _href = $(this).attr("href");
+        $('html, body').animate({scrollTop: $(_href).offset().top+"px"});
+        return false
+    });
 });
